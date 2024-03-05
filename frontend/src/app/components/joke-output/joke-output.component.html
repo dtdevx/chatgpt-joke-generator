@@ -1,0 +1,10 @@
+<div [ngSwitch]="getState()">
+  <div *ngSwitchCase="stateEnum.LOADING" class="loading-spinner mx-auto"></div>
+  <div *ngSwitchCase="stateEnum.DONE">
+    <div class="mb-5">
+      {{ joke }}
+    </div>
+    <img class="rounded-md" src="/assets/img/panda-laughing.webp" alt="">
+  </div>
+  <div *ngSwitchDefault>Lass mich deinen ersten Witz generieren.</div>
+</div>

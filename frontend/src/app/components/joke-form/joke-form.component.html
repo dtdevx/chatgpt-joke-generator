@@ -1,0 +1,39 @@
+<div>
+  <div>
+    <div class="mt-2">
+      <input
+        type="text"
+        [formControl]="hintsFormControl"
+        placeholder="Stichworte zum Anreichern"
+        class="block w-full rounded-md border-0 px-2.5 py-1.5 text-stone-900 shadow-sm ring-1 ring-inset ring-stone-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-amber-500 focus:outline-transparent sm:text-sm sm:leading-6"
+      >
+    </div>
+    <div
+      [ngClass]="{
+        'text-red-600': (hintsFormControl.value!.length > 80)
+      }"
+      class="text-sm mt-1 mb-3 ml-2.5"
+    >
+      {{ hintsFormControl.value!.length }} / 80 Zeichen
+      <span class="text-red-600 font-semibold" *ngIf="hintsFormControl.value!.length > 80"> - Maximal 80 Zeichen sind möglich!</span>
+    </div>
+
+  </div>
+  <div>
+    <button
+      type="button"
+      (click)="handleButtonClick()"
+      [disabled]="!hintsFormControl.valid"
+      [ngClass]="{
+        'bg-amber-500': hintsFormControl.valid,
+        'hover:bg-amber-400': hintsFormControl.valid,
+        'focus-visible:outline-amber-600': hintsFormControl.valid,
+        'bg-amber-400': !hintsFormControl.valid,
+        'hover:cursor-not-allowed': !hintsFormControl.valid
+      }"
+      class="relative inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+    >
+      Erzähl mir einen Witz
+    </button>
+  </div>
+</div>
